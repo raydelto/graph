@@ -7,7 +7,7 @@
 
 #include "Queue.h"
 
-Queue::Queue():_first(NULL),_last(NULL)
+Queue::Queue():_first(NULL),_last(NULL),_size(0)
 {
 
 
@@ -31,17 +31,26 @@ Vertex *Queue::dequeue()
 	}
 
 	_size --;
-
-	return NULL; //remove this with real code. Made this line to avoid warnings.
+	Vertex* temp = _first;
+	_first = _first -> _nextQueueVertex;
+	return temp;
 }
 
 
 
 void Queue::enqueue(Vertex* vertex)
 {
+	if(_first == NULL) //if the queue is empty
+	{
+		_first = vertex;
+		_last = vertex;
+
+	}else //if it's not empty
+	{
+		_last -> _nextQueueVertex = vertex;
+		_last = vertex;
+
+	}
 	_size++;
 }
-
-
-
 

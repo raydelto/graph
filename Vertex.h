@@ -12,6 +12,10 @@ class Vertex {
 public:
 	Vertex(std::string name);
 	virtual ~Vertex();
+	void addAdjacent(Vertex* adjacent);
+    int getDistance() const;
+    std::string getName() const;
+    Vertex *getRoute() const;
 private:
 	std::string _name;
 	Vertex* _firstAdjacent;
